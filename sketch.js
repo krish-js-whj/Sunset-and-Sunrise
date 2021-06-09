@@ -6,7 +6,7 @@ const Constraint = Matter.Constraint;
 var engine, world;
 var backgroundImg;
 
-var bg,time=0,gameState="RT" ;
+var bg,time=0,gameState="auto" ;
 
 function preload() {
     getBackgroundImg();
@@ -26,10 +26,11 @@ function draw()
     background(0)
      // add condition to check if any background image is there to add
      if (gameState=="RT"){
-
+getBackgroundImg();
      }
     else{
-        time+=1
+        time+=1;
+        getbg()
     }Engine.update(engine);
     // write code to display time in correct format here
     fill(0)
@@ -39,19 +40,19 @@ function draw()
     fill(225)
     text("Toggle between real time view and auto view by pressing left arrow and right arrow respectively. ",50,650)
    // console.log(time)
-getBackgroundImg();
+ 
 }
 async function getBackgroundImg(){
 
-    var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
-    var responseJSON = await response.json();
+     response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
+     responseJSON = await response.json();
 
-    var datetime = responseJSON.datetime;
-    var hour = datetime.slice(11,13);
-    var min = datetime.slice(14,16);
-    var hour= hour.toString();
-    var min= min.toString();
-    var hourNmin=hour.concat(min)
+     datetime = responseJSON.datetime;
+     hour = datetime.slice(11,13);
+     min = datetime.slice(14,16);
+     hour= hour.toString();
+     min= min.toString();
+     hourNmin=hour.concat(min)
     if (gameState=="auto"){
      if (time>2359){
        time=0;
@@ -60,8 +61,16 @@ async function getBackgroundImg(){
    else{
     time=parseFloat(hourNmin)
     }
-     
-    if(time>=0400 && time<=0600){
+}
+function keyPressed(){
+    if (keyCode==RIGHT_ARROW){
+        gameState="auto";
+    }if (keyCode==LEFT_ARROW){
+        gameState="RT"
+    }
+}
+function getbg(){
+if(time>=0400 && time<=0600){
         bg = "sunrise1.png";
     }else if(time>=0601 && time<=0800){
         bg = "sunrise2.png";
@@ -90,14 +99,6 @@ async function getBackgroundImg(){
     }else if(time>=0301 && time<=0600){
         bg = "sunset11.png";
     }
-
     backgroundImg = loadImage(bg);
 
-}
-function keyPressed(){
-    if (keyCode==RIGHT_ARROW){
-        gameState="auto";
-    }if (keyCode==LEFT_ARROW){
-        gameState="RT"
-    }
 }
