@@ -36,14 +36,16 @@ function draw()
      }
     Engine.update(engine);
     // write code to display time in correct format here
-    fill(0)
+    fill(225)
+    stroke("black")
+    strokeWeight(3)
     textSize(50)
 
    if(gameState=="RT")
    {   if (time<1200)
        text(hourS+":"+minS+" A.M.",50,100);
         else 
-        text(hourS+":"+minS+" P.M.",50,100);
+        text(hourS-12+":"+minS+" P.M.",50,100);
     }
     else {
         Hour+=0.01;
@@ -56,7 +58,7 @@ function draw()
       
     }
     textSize(25)
-    fill(225)
+    noStroke()
     text("Toggle between real time view and auto view by pressing left arrow and right arrow respectively. ",50,650)
     text("You might experience delay while switching",50,675)
     // console.log(time)
@@ -125,36 +127,36 @@ async function getBackgroundImg(){
 }
 
 function getbg()
-{if((Math.round(Hour*10)/10)>=4.01 &&(Math.round(Hour*10)/10)<=6)
+{if((Math.round(Hour*10)/10)>4.00 &&(Math.round(Hour*10)/10)<=6)
      {
         bg = "sunrise1.png";
-    } if((Math.round(Hour*10)/10)>=6.01 && (Math.round(Hour*10)/10)<=8.00){
+    } if((Math.round(Hour*10)/10)>6.00 && (Math.round(Hour*10)/10)<=8.00){
         bg = "sunrise2.png";
-    } if((Math.round(Hour*10)/10)>=8.01 && (Math.round(Hour*10)/10)<=9.00){
+    } if((Math.round(Hour*10)/10)>8.00 && (Math.round(Hour*10)/10)<=9.00){
         bg = "sunrise3.png";
-    } if((Math.round(Hour*10)/10)>=9.01 && (Math.round(Hour*10)/10)<=11.51){
+    } if((Math.round(Hour*10)/10)>9.00 && (Math.round(Hour*10)/10)<=11.51){
         bg = "sunrise4.png";
-    } if((Math.round(Hour*10)/10)>=11.51 && (Math.round(Hour*10)/10)<=13.00){
+    } if((Math.round(Hour*10)/10)>11.50 && (Math.round(Hour*10)/10)<=13.00){
         bg = "sunrise6.png";
-    } if((Math.round(Hour*10)/10)>=13.01 && (Math.round(Hour*10)/10)<=14.51){
+    } if((Math.round(Hour*10)/10)>13.00 && (Math.round(Hour*10)/10)<=14.51){
         bg = "sunrise5.png";
-    } if((Math.round(Hour*10)/10)>=14.51 && (Math.round(Hour*10)/10)<=16.00){
-        bg = "sunrise6.png";
-    } if((Math.round(Hour*10)/10)>=16.01 && (Math.round(Hour*10)/10)<=17.00){
+    } if((Math.round(Hour*10)/10)>14.50 && (Math.round(Hour*10)/10)<=16.00){
+        bg = "sunrise5.png";
+    } if((Math.round(Hour*10)/10)>16.00 && (Math.round(Hour*10)/10)<=17.00){
         bg = "sunset7.png";
-    } if((Math.round(Hour*10)/10)>=17.01 && (Math.round(Hour*10)/10)<=18.00){                                                     
+    } if((Math.round(Hour*10)/10)>17.00 && (Math.round(Hour*10)/10)<=18.00){                                                     
         bg = "sunset8.png";
-    } if((Math.round(Hour*10)/10)>=18.01 && (Math.round(Hour*10)/10)<=18.51){
+    } if((Math.round(Hour*10)/10)>18.00 && (Math.round(Hour*10)/10)<=18.51){
         bg = "sunset9.png";
-    } if((Math.round(Hour*10)/10)>=18.51 && (Math.round(Hour*10)/10)<=19.00){
+    } if((Math.round(Hour*10)/10)>18.50 && (Math.round(Hour*10)/10)<=19.00){
         bg = "sunset10.png";
-    } if((Math.round(Hour*10)/10)>=19.01 && (Math.round(Hour*10)/10)<=20.51){
+    } if((Math.round(Hour*10)/10)>19.00 && (Math.round(Hour*10)/10)<=20.51){
         bg = "sunset11.png";
-    } if((Math.round(Hour*10)/10)>=20.51 && (Math.round(Hour*10)/10)<=23.99){
+    } if((Math.round(Hour*10)/10)>20.51 && (Math.round(Hour*10)/10)<=23.99){
         bg = "sunset12.png";
-    } if((Math.round(Hour*10)/10)>=0.00 && (Math.round(Hour*10)/10)<=3.00){
+    } if((Math.round(Hour*10)/10)>0.00 && (Math.round(Hour*10)/10)<=3.00){
         bg = "sunset12.png";
-    } if((Math.round(Hour*10)/10)>=3.01 && (Math.round(Hour*10)/10)<=4.00){
+    } if((Math.round(Hour*10)/10)>3.00 && (Math.round(Hour*10)/10)<=4.00){
         bg = "sunset11.png";
     }
     backgroundImg = loadImage(bg);}
