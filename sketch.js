@@ -79,7 +79,7 @@ async function getBackgroundImg(){
      
     
     if (gameState=="RT"){ 
-        response = await fetch("https://api.api-ninjas.com/v1/worldtime?city=hyderabad");
+        response = await fetch("https://api.api-ninjas.com/v1/worldtime?timezone=Asia/Kolkata");
      responseJSON = await response.json();
      hour = responseJSON.hour;
      min = responseJSON.min;
@@ -159,6 +159,7 @@ function getbg()
         bg = "sunset11.png";
     }
     backgroundImg = loadImage(bg);}
+
 
 
 
