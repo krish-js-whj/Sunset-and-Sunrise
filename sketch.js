@@ -83,7 +83,7 @@ async function getBackgroundImg(){
      responseJSON = await response.json();
      datetime = responseJSON.datetime;
      hour = datetime.slice(11,13);
-     min = datetime.slice(14,16);
+     min = datetime.slice(15,17);
      hourS= hour.toString();
      minS= min.toString();
      hourNmin=hourS.concat(minS);
@@ -160,5 +160,6 @@ function getbg()
         bg = "sunset11.png";
     }
     backgroundImg = loadImage(bg);}
+
 
 
