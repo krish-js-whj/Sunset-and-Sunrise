@@ -161,3 +161,4 @@ function getbg()
     }
     backgroundImg = loadImage(bg);}
 
+
